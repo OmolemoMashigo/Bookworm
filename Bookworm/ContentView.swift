@@ -22,7 +22,7 @@ struct ContentView: View {
                 .toolbar{
                     ToolbarItem(placement: .topBarTrailing){
                         Button("Add book", systemImage: "plus"){
-                            showingScreen = true
+                            showingScreen.toggle()
                         }
                     }
                 }
