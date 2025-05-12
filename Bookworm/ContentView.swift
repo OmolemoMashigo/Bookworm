@@ -11,11 +11,24 @@ import SwiftData
 struct ContentView: View {
     
     @Environment(\.modelContext) var modelContext
+    @Query var books: [Book]
     
+    @State private var showingScreen = false
     
     var body: some View {
         NavigationStack{
-            Text("")
+            Text("Count: \(books.count)")
+                .navigationTitle("Bookworm")
+                .toolbar{
+                    ToolbarItem(placement: .topBarTrailing){
+                        Button("Add book", systemImage: "plus"){
+                            showingScreen = true
+                        }
+                    }
+                }
+                .sheet(isPresented: $showingScreen){
+                    AddBookView()
+                }
         }
     }
 }
